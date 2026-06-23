@@ -17,6 +17,8 @@ class View(ft.UserControl):
         self.btn_hello = None
         self.txt_result = None
         self.txt_container = None
+        self._txtNum=None
+        self._btnCercaOggetto=None
 
     def load_interface(self):
         # title
@@ -34,8 +36,15 @@ class View(ft.UserControl):
                                                   bgcolor="orange",
                                                   color="white",
                                                   width=200)
+        self._txtNum = ft.TextField(label="Numero", color="orange", border_color="orange")
+        self._btnCercaOggetto = ft.ElevatedButton(text="Cerca Oggetto", on_click=self._controller.handleCercaOggetto,
+                                                  bgcolor="orange",
+                                                  color="white",
+                                                  width=200)
 
         self._page.controls.append(ft.Row([self._btnAnalizzaOggetti, self._txtIdOggetto, self._btnCompConnessa],
+                                          alignment=ft.MainAxisAlignment.CENTER))
+        self._page.controls.append(ft.Row([self._txtNum,self._btnCercaOggetto],
                                           alignment=ft.MainAxisAlignment.CENTER))
 
         # List View where the reply is printed
