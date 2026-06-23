@@ -9,8 +9,23 @@ class Controller:
         self._model = model
 
     def handleAnalizzaOggetti(self, e):
-        pass
+        return self._model.creaGrafo()
 
     def handleCompConnessa(self,e):
-        pass
 
+        id=int(self._view._txtIdOggetto.value)
+
+        compConn= self._model.handleCompConnessaModel(id)
+
+        if compConn is not None:
+
+            self._view.txt_result.controls.append(
+                ft.Text(len(list(compConn)))
+            )
+
+        else:
+            self._view.txt_result.controls.append(
+                ft.Text("NODO INSERITO NON VALIDO" , color="RED")
+            )
+
+        self._view.update_page()
